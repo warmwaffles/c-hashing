@@ -1,0 +1,14 @@
+---
+Language: Cpp
+BasedOnStyle: Mozilla
+IndentWidth: 4
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlignAfterOpenBracket: Align
+SpaceBeforeParens: ControlStatements
+ColumnLimit: 120
+UseTab: Never
+SortIncludes: false
+AlignOperands: true
+...
