@@ -25,3 +25,5 @@ endif()
 
 add_subdirectory(xxhash)
 add_subdirectory(spooky)
+add_subdirectory(murmurhash1)
+add_subdirectory(murmurhash2)
