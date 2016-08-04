@@ -1,7 +1,7 @@
 #include "common.h"
 
 //-----------------------------------------------------------------------------
-// MurmurHash2 was written by Austin Appleby, and is placed in the public
+// murmurhash2 was written by Austin Appleby, and is placed in the public
 // domain. The author hereby disclaims copyright to this source code.
 //
 // Note - This code makes a few assumptions about how your machine behaves -
@@ -16,7 +16,7 @@
 //    machines.
 
 uint32_t
-MurmurHash2(const void* key, int len, uint32_t seed)
+murmurhash2(const void* key, int len, uint32_t seed)
 {
     // 'm' and 'r' are mixing constants generated offline.
     // They're not really 'magic', they just happen to work well.

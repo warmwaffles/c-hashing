@@ -1,13 +1,13 @@
 #include "common.h"
 
 //-----------------------------------------------------------------------------
-// MurmurHashNeutral2, by Austin Appleby
+// murmurhash_neutral2, by Austin Appleby
 
 // Same as MurmurHash2, but endian- and alignment-neutral.
 // Half the speed though, alas.
 
 uint32_t
-MurmurHashNeutral2(const void* key, int len, uint32_t seed)
+murmurhash_neutral2(const void* key, int len, uint32_t seed)
 {
     const uint32_t m = 0x5bd1e995;
     const int r = 24;

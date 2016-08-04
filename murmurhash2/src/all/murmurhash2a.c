@@ -12,7 +12,7 @@
 // more amenable to incremental implementations.
 
 uint32_t
-MurmurHash2A(const void* key, int len, uint32_t seed)
+murmurhash2a(const void* key, int len, uint32_t seed)
 {
     const uint32_t m = 0x5bd1e995;
     const int r = 24;

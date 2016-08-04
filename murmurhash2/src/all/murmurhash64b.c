@@ -4,7 +4,7 @@
 // 64-bit hash for 32-bit platforms
 
 uint64_t
-MurmurHash64B(const void* key, int len, uint64_t seed)
+murmurhash64b(const void* key, int len, uint64_t seed)
 {
     const uint32_t m = 0x5bd1e995;
     const int r = 24;

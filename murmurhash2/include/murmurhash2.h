@@ -9,12 +9,12 @@ typedef unsigned __int64 uint64_t;
 #include <stdint.h>
 #endif // !defined(_MSC_VER)
 
-uint32_t MurmurHash2(const void* key, int len, uint32_t seed);
-uint64_t MurmurHash64A(const void* key, int len, uint64_t seed);
-uint64_t MurmurHash64B(const void* key, int len, uint64_t seed);
-uint32_t MurmurHash2A(const void* key, int len, uint32_t seed);
-uint32_t MurmurHashNeutral2(const void* key, int len, uint32_t seed);
-uint32_t MurmurHashAligned2(const void* key, int len, uint32_t seed);
+uint32_t murmurhash2(const void* key, int len, uint32_t seed);
+uint64_t murmurhash64a(const void* key, int len, uint64_t seed);
+uint64_t murmurhash64b(const void* key, int len, uint64_t seed);
+uint32_t murmurhash2a(const void* key, int len, uint32_t seed);
+uint32_t murmurhash_neutral2(const void* key, int len, uint32_t seed);
+uint32_t murmurhash_aligned2(const void* key, int len, uint32_t seed);
 
 
 //-----------------------------------------------------------------------------

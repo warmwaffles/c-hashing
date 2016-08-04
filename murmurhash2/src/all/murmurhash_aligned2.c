@@ -1,7 +1,7 @@
 #include "common.h"
 
 //-----------------------------------------------------------------------------
-// MurmurHashAligned2, by Austin Appleby
+// murmurhash_aligned2, by Austin Appleby
 
 // Same algorithm as MurmurHash2, but only does aligned reads - should be safer
 // on certain platforms.
@@ -11,7 +11,7 @@
 #define MIX(h,k,m) { k *= m; k ^= k >> r; k *= m; h *= m; h ^= k; }
 
 uint32_t
-MurmurHashAligned2(const void* key, int len, uint32_t seed)
+murmurhash_aligned2(const void* key, int len, uint32_t seed)
 {
     const uint32_t m = 0x5bd1e995;
     const int r = 24;
