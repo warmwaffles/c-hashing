@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/module ${CMAKE_MODULE_PATH})
+
 project(hashing C)
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -23,7 +25,13 @@ else()
     add_definitions("-DLOG_VERBOSE=0")
 endif()
 
+include(TargetArch)
+
+target_architecture(CMAKE_TARGET_ARCHITECTURES)
+message(STATUS "Target architectures: ${CMAKE_TARGET_ARCHITECTURES}")
+
 add_subdirectory(xxhash)
 add_subdirectory(spooky)
 add_subdirectory(murmurhash1)
 add_subdirectory(murmurhash2)
+add_subdirectory(murmurhash3)
