@@ -27,4 +27,8 @@ target_include_directories(seahash PUBLIC
     $<INSTALL_INTERFACE:include>
     PRIVATE src)
 
-export(TARGETS seahash FILE murmurhash1_config.cmake)
+export(TARGETS seahash FILE seahash_config.cmake)
+
+add_executable(seahash_test test/seahash_test.c)
+target_link_libraries(seahash_test PUBLIC seahash)
+add_test(NAME seahash_test COMMAND seahash_test)
