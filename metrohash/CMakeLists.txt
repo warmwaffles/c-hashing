@@ -2,49 +2,29 @@ cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
 project(metrohash C)
 
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
-endif(NOT CMAKE_BUILD_TYPE)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(VERSION_MAJOR   0   CACHE STRING "Project major version number.")
+set(VERSION_MINOR   1   CACHE STRING "Project minor version number.")
+set(VERSION_PATCH   0   CACHE STRING "Project patch version number.")
+mark_as_advanced(VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
 
 set(CMAKE_C_FLAGS_DEBUG "-std=c11 -Wall -Wextra -g")
-set(CMAKE_C_FLAGS_RELEASE "-std=c11 -Wall -Wextra -O3")
+set(CMAKE_C_FLAGS_RELEASE "-std=c11 -Wall -Wextra -flto -O3")
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
     add_definitions("-DDEBUG=1")
-    add_definitions("-DLOG_LEVEL=5")
-    add_definitions("-DLOG_VERBOSE=0")
 else()
     add_definitions("-DNDEBUG=1")
-    add_definitions("-DLOG_LEVEL=3")
-    add_definitions("-DLOG_VERBOSE=0")
 endif()
 
-# #############################################################################
-# #############################################################################
-file(GLOB_RECURSE SHARED_SOURCES src/all/*.c)
+set(SOURCES src/metrohash.c)
 
-if (APPLE)
-    file(GLOB_RECURSE PLATFORM_SOURCES src/osx/*.c)
-elseif (WIN32)
-    file(GLOB_RECURSE PLATFORM_SOURCES src/win/*.c)
-else()
-    file(GLOB_RECURSE PLATFORM_SOURCES src/linux/*.c)
-endif()
-
-set(SOURCES ${SHARED_SOURCES} ${PLATFORM_SOURCES})
-
-# #############################################################################
-# #############################################################################
 include_directories(include)
 
-# #############################################################################
-# #############################################################################
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(metrohash STATIC ${SOURCES})
 
-# #############################################################################
-# #############################################################################
-set(METROHASH_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include" CACHE PATH "${PROJECT_NAME} include dirs")
+target_include_directories(metrohash PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+    PRIVATE src)
+
+export(TARGETS metrohash FILE metrohash_config.cmake)

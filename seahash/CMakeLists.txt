@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
-project(spooky C)
+project(seahash C)
 
 set(VERSION_MAJOR   0   CACHE STRING "Project major version number.")
 set(VERSION_MINOR   1   CACHE STRING "Project minor version number.")
@@ -16,15 +16,15 @@ else()
     add_definitions("-DNDEBUG=1")
 endif()
 
-set(SOURCES src/spooky.c)
+set(SOURCES src/seahash.c)
 
 include_directories(include)
 
-add_library(spooky STATIC ${SOURCES})
+add_library(seahash STATIC ${SOURCES})
 
-target_include_directories(spooky PUBLIC
+target_include_directories(seahash PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
     PRIVATE src)
 
-export(TARGETS spooky FILE spooky_config.cmake)
+export(TARGETS seahash FILE murmurhash1_config.cmake)

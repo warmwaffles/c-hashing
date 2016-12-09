@@ -4,7 +4,7 @@ void
 murmurhash3_32(const void* key, int len, uint32_t seed, void* out)
 {
     const uint8_t* data = (const uint8_t*)key;
-    const int nblocks = len / 4;
+    const int nblocks   = len / 4;
 
     uint32_t h1 = seed;
 
@@ -32,7 +32,7 @@ murmurhash3_32(const void* key, int len, uint32_t seed, void* out)
     // tail
 
     const uint8_t* tail = (const uint8_t*)(data + nblocks * 4);
-    uint32_t k1 = 0;
+    uint32_t k1         = 0;
 
     switch (len & 3) {
         case 3:
@@ -51,6 +51,6 @@ murmurhash3_32(const void* key, int len, uint32_t seed, void* out)
     // finalization
 
     h1 ^= len;
-    h1 = fmix32(h1);
+    h1              = fmix32(h1);
     *(uint32_t*)out = h1;
 }

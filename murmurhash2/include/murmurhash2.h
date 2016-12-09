@@ -16,7 +16,6 @@ uint32_t murmurhash2a(const void* key, int len, uint32_t seed);
 uint32_t murmurhash_neutral2(const void* key, int len, uint32_t seed);
 uint32_t murmurhash_aligned2(const void* key, int len, uint32_t seed);
 
-
 //-----------------------------------------------------------------------------
 // CMurmurHash2A, by Austin Appleby
 

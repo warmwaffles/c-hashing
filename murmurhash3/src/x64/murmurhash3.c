@@ -1,10 +1,10 @@
-#include "../all/common.h"
+#include "../common.h"
 
 void
 murmurhash3_128(const void* key, int len, uint32_t seed, void* out)
 {
     const uint8_t* data = (const uint8_t*)key;
-    const int nblocks = len / 16;
+    const int nblocks   = len / 16;
 
     uint64_t h1 = seed;
     uint64_t h2 = seed;
